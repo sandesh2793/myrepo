@@ -1,2 +1,0 @@
-# myrepo
-for my team
