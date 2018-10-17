@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<Module>
+
+  <ModulePrefs title="Hello world gadget" height="400">
+
+    <Require feature="osapi"/>
+
+    <Require feature="minimessage"/>
+
+  </ModulePrefs>
+
+  <Content type="html">
+
+    <![CDATA[
+
+      <script type="text/javascript">
+
+        function save(){
+
+          var sector=document.getElementsByName('sectorInput')[0].value;
+
+          var country=document.getElementsByName('countryInput'[0]).value;
+
+          var project=document.getElementsByName('projectInput')[0].value;
+
+          var specKnowledge=document.getElementsByName('specKnowledgeInput')[0].value;
+
+          var saveMessage = new gadgets.MiniMessage(__MODULE_ID__);
+
+          saveMessage.createDismissibleMessage("Your expertises were saved");
+
+        }
+
+        function init() {
+
+          osapi.people.getViewer().execute(function(viewerData) {
+
+            if (!viewerData.error) {
+
+              var viewerDiv = document.getElementById('current_user_id');
+
+              viewerDiv.innerHTML = viewerData.displayName;
+
+            };
+
+          });
+
+        }
+
+        gadgets.util.registerOnLoadHandler(init);
+
+      </script>
+
+     
+
+      <style type="text/css">
+
+        label { display: inline-block; width: 100px; }
+
+        select { display: inline-block; width: 100px; }
+
+      </style>
+
+     
+
+      <div id=”content”>
+
+        <div id=”greeting”> Hello <span id="current_user_id"> </span>
+
+        </div>
+
+        <div id="editForm">
+
+                                                                              <br>
+
+          <form action="#">
+
+            <div id="sector">
+
+              <label>sector: </label>
+
+              <select name="sectorInput" size="1">
+
+                <option> sector 1</option>
+
+                <option> sector 2</option>
+
+                <option> sector 3</option>
+
+                <option> sector 4</option>
+
+                <option> sector 5</option>
+
+              </select>
+
+              knowledge: low
+
+              <input type="radio" name="sectorRating" value="0">
+
+              <input type="radio" name="sectorRating" value="1">
+
+              <input type="radio" name="sectorRating" value="2″>
+
+              <input type="radio" name="sectorRating" value="3">
+
+              <input type="radio" name="sectorRating" value="4"> high
+
+            </div>
+
+            <br>
+
+            <div id=”country“>
+
+              <label>country: </label>
+
+              <select name="countryInput" size="1">
+
+                <option> country1</option>
+
+                <option> country2</option>
+
+                <option> country3</option>
+
+                <option> country4</option>
+
+                <option> country5</option>
+
+              </select>
+
+              knowledge: low
+
+              <input type="radio" name="countryRating" value="0">
+   <input type="radio" name="countryRating" value="1">   <input type="radio" name="countryRating" value="2">   <input type="radio" name="countryRating" value="3">   <input type="radio" name="countryRating" value="4">
+            high
+
+            </div>
+
+            <br>
+
+            <div id="project">
+
+              <label>project: </label>
+
+              <input type="text" name="projectInput" size="50">
+
+            </div>
+
+            <br>
+
+            <div id="specialist knowledge">
+
+              <label>specialist knowledge:</label>
+
+              <input type="text" name="specKnowledgeInput" size="50">
+
+            </div>
+
+            <br>
+
+            <br>
+
+            <input type="button" value="Save" onclick="save()"/>
+
+          </form>
+
+                                               </div>
+
+      </div>
+
+    ]]>
+
+  </Content>
+
+</Module>
